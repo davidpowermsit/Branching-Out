@@ -1,4 +1,5 @@
 import json
+import sys
 
 
 def get_users():
@@ -37,18 +38,25 @@ def filter_users_by_email(email):
 
 
 if __name__ == "__main__":
-    filter_option = (
-        input("What would you like to filter by? (name, email, age): ").strip().lower()
-    )
+    while True:
+        filter_option = (
+            input("What would you like to filter by? (name, email, age): ")
+            .strip()
+            .lower()
+        )
 
-    if filter_option == "name":
-        search = input("Enter a name to filter users: ").strip()
-        filter_users_by_name(search)
-    elif filter_option == "email":
-        search = input("Enter an email to filter users: ").strip()
-        filter_users_by_email(search)
-    elif filter_option == "age":
-        search = int(input("Enter an age to filter users: ").strip())
-        filter_users_by_age(search)
-    else:
-        print("Filtering by that option is not yet supported.")
+        if filter_option == "name":
+            search = input("Enter a name to filter users: ").strip()
+            filter_users_by_name(search)
+        elif filter_option == "email":
+            search = input("Enter an email to filter users: ").strip()
+            filter_users_by_email(search)
+        elif filter_option == "age":
+            search = int(input("Enter an age to filter users: ").strip())
+            filter_users_by_age(search)
+        else:
+            print("Filtering by that option is not yet supported.")
+
+        choice = input("Hit Enter to try again or type '#' to exit: ").strip()
+        if choice == "#":
+            sys.exit()
